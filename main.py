@@ -15,9 +15,15 @@ def get_book_text(book_path):
 
     return book_text
 
+def usage():
+    logger.error(f"python3 {sys.argv[0]} <book>.")
+    sys.exit(1)
+
 def main() -> None:
+    if len(sys.argv) != 2:
+        usage()
     
-    book_path = Path("./books/frankenstein_or_the_modern_prometheus.txt")
+    book_path = Path(sys.argv[1])
     book_text = get_book_text(book_path)
     num_of_words = number_of_words(book_text)
     num_each_char = number_of_each_char(book_text)
